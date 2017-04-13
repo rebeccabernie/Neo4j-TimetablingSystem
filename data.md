@@ -1,4 +1,4 @@
-This is a file of raw data compiled from the [GMIT Timetabling Website](timetable.gmit.ie)  
+This is a file of raw data compiled from the [GMIT Timetabling Website](http://timetable.gmit.ie/sws1617/(S(ci43p3yupqqdwv55i0ejk455))/default.aspx)  
 
 ## Time Slots
 8:00
@@ -21,3 +21,18 @@ This is a file of raw data compiled from the [GMIT Timetabling Website](timetabl
 16:30
 17:00
 17:30
+
+## Year Groups
+Year 1: A, B, C, D, E  
+Year 2: A, B, C  
+Year 3: A, B, C  
+Year 4: A, B  
+
+
+## Subjects
+### Year 1  
+SOFTWARE DESIGN & PROG DEV  
+GRAPH. USER INTERFACE&WEB DEV  
+ESSENTIAL MATHS FOR COMP 1&2  
+COMP TECH  
+E-BUSINESS ADMIN  
