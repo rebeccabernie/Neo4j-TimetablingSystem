@@ -60,3 +60,28 @@ THEORY OF ALGORITHMS
 GESTURE BASED UI DEVELOPMENT   
 APPLIED PROJECT & MINOR DISS  
 SOFTWARE ENG  
+
+## Staff / Lecturers
+
+Lecturers obtained by selecting List View on the [GMIT Timetabling Website](http://timetable.gmit.ie/sws1617/(S(ci43p3yupqqdwv55i0ejk455))/default.aspx)  
+
+Deirdre O'Donovan  
+Annette Cosgrove  
+Gerard Harrison  
+John Healy  
+Daniel Cregg  
+Martin Hynes  
+Neil Keane  
+Ian Mcloughlin  
+Damien Costello  
+Patrick Mannion  
+Gerry Agnew  
+Valerie Butler  
+Gemma O'Callaghan  
+Kevin O'Brien  
+Michael Duignan  
+Aoife O'Brien  
+Brian Mc Ginley  
+John K. Farrell  
+Garrett Jordan  
+Owen Foley  
