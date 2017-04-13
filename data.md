@@ -65,23 +65,23 @@ SOFTWARE ENG
 
 Lecturers obtained by selecting List View on the [GMIT Timetabling Website](http://timetable.gmit.ie/sws1617/(S(ci43p3yupqqdwv55i0ejk455))/default.aspx)  
 
-Deirdre O'Donovan  
-Annette Cosgrove  
-Gerard Harrison  
-John Healy  
-Daniel Cregg  
-Martin Hynes  
-Neil Keane  
-Ian Mcloughlin  
-Damien Costello  
-Patrick Mannion  
-Gerry Agnew  
-Valerie Butler  
-Gemma O'Callaghan  
-Kevin O'Brien  
-Michael Duignan  
-Aoife O'Brien  
-Brian Mc Ginley  
-John K. Farrell  
-Garrett Jordan  
-Owen Foley  
+G Agnew  
+V Butler  
+G O'Callaghan  
+K O'Brien  
+M Duignan  
+A O'Brien  
+B McGinley  
+J K. Farrell  
+P Mannion  
+N Keane  
+M Hynes  
+D Cregg  
+D O'Donovan  
+J Healy  
+A Cosgrove  
+G Harrison  
+I McLoughlin  
+D Costello  
+O Foley  
+G Jordan  
