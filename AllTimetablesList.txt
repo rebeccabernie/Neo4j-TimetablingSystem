@@ -1,4 +1,14 @@
 
+Information obtained by going to timetable.gmit.ie - 2016/17 Timetable
+Select department			- Computer Science & Applied Physics
+Select relevant programs 	- L7 Years 1 -3, L8 Year 4
+Select timeframe			- Spring/Summer - Jan 2017 to June 2017
+Select days					- Weekdays
+Select type 				- List Timetable
+
+Copied all displayed information into text file and formated as needed.
+
+
 --- FIRST YEAR ---
 
 Monday
@@ -66,13 +76,13 @@ E-BUSINESS ADMIN/L					L	13:00	14:00	1:00	0941	John K., Farrell
 --- SECOND YEAR ---
 
 Monday
-Activity									Ty	Start	End		Dura	Room		Staff
-DATABASE MGMT Gr A/P						P	9:00	11:00	2:00	0483 CR2	Neil Keane
-ADV. PROCEDURAL PROGRAMMING Gr C/P			P	9:00	11:00	2:00	0436 CR5	Martin Hynes
-MOBILE APPLICATIONS DEVELOPMENT/L			L	11:00	12:00	1:00	0223		Daniel Cregg
-KBDIG73 APPLD NETWORKING TECH 2/L			L	12:00	13:00	1:00	0996		Deirdre, O'Donovan
-DATA STRUCTURES & ALGORITHMS Gr C			P	14:00	15:00	1:00	0436 CR5	John, Healy
-DATA STRUCTURES & ALGORITHMS/L				L	15:00	16:00	1:00	0364		John, Healy
+Activity								Ty	Start	End		Dura	Room		Staff
+DATABASE MGMT Gr A/P					P	9:00	11:00	2:00	0483 CR2	Neil Keane
+ADV. PROCEDURAL PROGRAMMING Gr C/P		P	9:00	11:00	2:00	0436 CR5	Martin Hynes
+MOBILE APPLICATIONS DEVELOPMENT/L		L	11:00	12:00	1:00	0223		Daniel Cregg
+KBDIG73 APPLD NETWORKING TECH 2/L		L	12:00	13:00	1:00	0996		Deirdre, O'Donovan
+DATA STRUCTURES & ALGORITHMS Gr C		P	14:00	15:00	1:00	0436 CR5	John, Healy
+DATA STRUCTURES & ALGORITHMS/L			L	15:00	16:00	1:00	0364		John, Healy
 
 Tuesday
 Activity								Ty	Start	End		Dura	Room		Staff
@@ -116,14 +126,14 @@ APPLD NETWORKING TECH 2 Gr B/P		P	11:00	13:00	2:00	0482 CR3					Deirdre, O'Donov
 
 --- THIRD YEAR ---
 	
-Monday
-Activity				Ty	Start	End		Dura	Room		Staff
-GRAPH THEORY Gr A/P		P	9:00	10:00	1:00	0145		Ian Mcloughlin
-Database Mgmt Sys/L		L	10:00	11:00	1:00	0994		Deirdre, O'Donovan
-MOBILE APPS/L			L	12:00	14:00	2:00	0223		Damien, Costello
-GRAPH THEORY Gr A/P		P	14:00	15:00	1:00	PF05		Ian Mcloughlin
-Software Testing Gr A/P	P	16:00	18:00	2:00	0481 CR4	Martin Hynes
-SERVER SIDE RAD Gr C/P	P	16:00	18:00	2:00	0436 CR5	Gerard Harrison
+Monday	
+Activity					Ty	Start	End		Dura	Room		Staff
+GRAPH THEORY Gr A/P			P	9:00	10:00	1:00	0145		Ian Mcloughlin
+Database Mgmt Sys/L			L	10:00	11:00	1:00	0994		Deirdre, O'Donovan
+MOBILE APPS/L				L	12:00	14:00	2:00	0223		Damien, Costello
+GRAPH THEORY Gr A/P			P	14:00	15:00	1:00	PF05		Ian Mcloughlin
+Software Testing Gr A/P		P	16:00	18:00	2:00	0481 CR4	Martin Hynes
+SERVER SIDE RAD Gr C/P		P	16:00	18:00	2:00	0436 CR5	Gerard Harrison
 
 Tuesday
 Activity						Ty	Start	End		Dura	Room		Staff
@@ -162,10 +172,10 @@ GRAPH THEORY/L					L	11:00	12:00	1:00		0208		Ian Mcloughlin
 --- FOURTH YEAR ---
 
 Monday
-Activity					Ty	Start	End		Dura	Room	Staff
-Artificial Intelligence/L	L	10:00	11:00	1:00	0995	John, Healy
-Artificial Intelligence/P	P	11:00	13:00	2:00	0470 	John, Healy
-Theory of Algorithms/L		L	13:00	14:00	1:00	0379	Ian Mcloughlin
+Activity						Ty	Start	End		Dura	Room	Staff
+Artificial Intelligence/L		L	10:00	11:00	1:00	0995	John, Healy
+Artificial Intelligence/P		P	11:00	13:00	2:00	0470 	John, Healy
+Theory of Algorithms/L			L	13:00	14:00	1:00	0379	Ian Mcloughlin
 
 Tuesday
 Activity						Ty	Start	End		Dura	Room	Staff
@@ -189,6 +199,6 @@ Software Eng Gr A/P				P	13:00	14:00	1:00	PF18		Garrett Jordan
 Software Eng Gr B/P				P	14:00	15:00	1:00	PF18		Garrett Jordan
 
 Friday
-Activity							Ty	Start	End		Dura	Room	Staff
-GESTURE BASED UI DEVELOPMENT Gr A/P	P	9:00	11:00	2:00	PF18	Damien, Costello
-GESTURE BASED UI DEVELOPMENT Gr B/P	P	11:00	13:00	2:00	PF18	Damien, Costello
+Activity								Ty	Start	End		Dura	Room	Staff
+GESTURE BASED UI DEVELOPMENT Gr A/P		P	9:00	11:00	2:00	PF18	Damien, Costello
+GESTURE BASED UI DEVELOPMENT Gr B/P		P	11:00	13:00	2:00	PF18	Damien, Costello
