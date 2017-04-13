@@ -1,0 +1,194 @@
+
+--- FIRST YEAR ---
+
+Monday
+Activity							Ty	Start	End		Dura 	Room		Staff
+SOFTWARE DESIGN & PROG DEV 1/L		L	11:00	12:00	1:00	0941		Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1 Gr A/P	P	13:00	16:00	3:00	0483 CR2	Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1 Gr B/P	P	13:00	16:00	3:00	0482 CR3	Valerie, Butler
+SOFTWARE DESIGN & PROG DEV 1 Gr D/P	P	13:00	16:00	3:00	0481 CR4	Gemma O'Callaghan
+GRAPH. USER INTERFACE&WEB DEV E/P	P	13:00	16:00	3:00	0480 CR7	Kevin, O'Brien
+GRAPH. USER INTERFACE&WEB DEV C/P	P	13:00	16:00	3:00	0484 CR1	Michael Duignan
+ESSENTIAL MATHS FOR COMP 1&2 Gr C/T	T	16:00	17:00	1:00	0484 CR1	Aoife O'Brien
+
+Tuesday
+Activity							Ty	Start	End	Duration	Room		Staff
+COMP TECH/L							L 	9:00	10:00	1:00	0994		Brian Mc Ginley
+ESSENTIAL MATHS FOR COMP 1&2/L		L	10:00	11:00	1:00	0994	 
+ESSENTIAL MATHS FOR COMP 1&2/L		L	10:00	11:00	1:00	
+ESSENTIAL MATHS FOR COMP 1&2/L		L	10:00	11:00	1:00	
+E-BUSINESS ADMIN/L					L	11:00	12:00	1:00	0994		John K., Farrell
+ESSENTIAL MATHS FOR COMP 1&2 Gr B/T	T	13:00	14:00	1:00	0484 CR1	Aoife O'Brien
+SOFTWARE DESIGN & PROG DEV 1 Gr E/P	P	14:00	17:00	3:00	0482 CR3	Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1 Gr C/P	P	14:00	17:00	3:00	0483 CR2	Valerie, Butler
+GRAPH. USER INTERFACE&WEB DEV B/P	P	14:00	17:00	3:00	0481 CR4	Michael Duignan
+
+Wednesday
+Activity							Ty	Start	End		Dura	Room		Staff
+ESSENTIAL MATHS FOR COMP 1&2/L		L	9:00	10:00	1:00	0994		Aoife O'Brien
+SOFTWARE DESIGN & PROG DEV 1/L		L	11:00	12:00	1:00	0903		Gerry, Agnew
+COMP TECH Gr E/P					P	12:00	13:00	1:00	0483 CR2	Brian Mc Ginley
+SOFTWARE DESIGN & PROG DEV 1 Gr E/T	T	13:00	14:00	1:00	PF05		Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1 Gr D/T	T	13:00	14:00	1:00	0373		Gemma O'Callaghan
+ESSENTIAL MATHS FOR COMP 1&2 Gr A/T	T	13:00	14:00	1:00	0484 CR1	Aoife O'Brien
+SOFTWARE DESIGN & PROG DEV 1 Gr B/T	T	14:00	15:00	1:00	PF02		Gerry, Agnew
+GRAPH. USER INTERFACE&WEB DEV A/P	P	14:00	17:00	3:00	0436 CR5	Michael Duignan
+GRAPH. USER INTERFACE&WEB DEV D/P	P	14:00	17:00	3:00	0483 CR2	Patrick Mannion
+SOFTWARE DESIGN & PROG DEV 1 Gr C/T	T	15:00	16:00	1:00	PF08		Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1/L		L	17:00	18:00	1:00	0996		Gerry, Agnew
+
+Thursday
+Activity							TY	Start	End		Dura	Room		Staff
+SOFTWARE DESIGN & PROG DEV 1 Gr E/P	P	9:00	11:00	2:00	0483 CR2	Gerry, Agnew
+SOFTWARE DESIGN & PROG DEV 1 Gr D/P	P	9:00	11:00	2:00	0481 CR4	Gemma O'Callaghan
+SOFTWARE DESIGN & PROG DEV 1 Gr C/P	P	9:00	11:00	2:00	0436 CR5 	Valerie, Butler
+COMP TECH Gr B/P					P	9:00	10:00	1:00	0484 CR1	Brian Mc Ginley
+COMP TECH Gr A/P					P	10:00	11:00	1:00	0480 CR7	Brian Mc Ginley
+SOFTWARE DESIGN & PROG DEV 1 Gr A/P	P	11:00	13:00	2:00	0483 CR2	Gerry, Agnew
+COMP TECH Gr C/P					P	11:00	12:00	1:00	0436 CR5 	Brian Mc Ginley
+SOFTWARE DESIGN & PROG DEV 1 Gr B/P	P	11:00	13:00	2:00	0480 CR7	Valerie, Butler
+ESSENTIAL MATHS FOR COMP 1&2 Gr D/T	T	11:00	12:00	1:00	0481 CR4	Aoife O'Brien
+E-BUSINESS ADMIN/L					L	13:00	14:00	1:00	0941		John K., Farrell
+ESSENTIAL MATHS FOR COMP 1&2 Gr E/T	T	14:00	15:00	1:00	0484 CR1	Aoife O'Brien
+SOFTWARE DESIGN & PROG DEV 1 Gr A/T	T	15:00	16:00	1:00	PF02		Gerry, Agnew
+COMP TECH Gr D/P					P	15:00	16:00	1:00	0480 CR7	Brian Mc Ginley
+COMP TECH/L							L	16:00	17:00	1:00	0941		Brian Mc Ginley
+
+Friday
+Activity							Ty	Start	End		Dura	Room	Staff
+GRAPH. USER INTERFACE&WEB DEV/L		L	10:00	11:00	1:00	0941	Michael Duignan
+SOFTWARE DESIGN & PROG DEV 1/L		L	11:00	12:00	1:00	0994	Gerry, Agnew
+ESSENTIAL MATHS FOR COMP 1&2/L		L	12:00	13:00	1:00	0941	Aoife O'Brien
+E-BUSINESS ADMIN/L					L	13:00	14:00	1:00	0941	John K., Farrell
+
+
+
+--- SECOND YEAR ---
+
+Monday
+Activity									Ty	Start	End		Dura	Room		Staff
+DATABASE MGMT Gr A/P						P	9:00	11:00	2:00	0483 CR2	Neil Keane
+ADV. PROCEDURAL PROGRAMMING Gr C/P			P	9:00	11:00	2:00	0436 CR5	Martin Hynes
+MOBILE APPLICATIONS DEVELOPMENT/L			L	11:00	12:00	1:00	0223		Daniel Cregg
+KBDIG73 APPLD NETWORKING TECH 2/L			L	12:00	13:00	1:00	0996		Deirdre, O'Donovan
+DATA STRUCTURES & ALGORITHMS Gr C			P	14:00	15:00	1:00	0436 CR5	John, Healy
+DATA STRUCTURES & ALGORITHMS/L				L	15:00	16:00	1:00	0364		John, Healy
+
+Tuesday
+Activity								Ty	Start	End		Dura	Room		Staff
+ACCTG C/P								P	10:00	11:00	1:00	0480 CR7	Annette, Cosgrove
+PROJ MGT & COLLABORATIVE COMM/L			L	11:00	13:00	2:00	0940		Gerard Harrison
+APPLD NETWORKING TECH 2/L				L	13:00	14:00	1:00	0939		Deirdre, O'Donovan
+MOBILE APPLICATIONS DEVELOPMENT Gr B/P	P	16:00	18:00	2:00	0480 CR7	Daniel Cregg
+
+Wednesday
+Activity								Ty	Start	End		Dura	Room		Staff
+DATA STRUCTURES & ALGORITHMS Gr B		P	9:00	10:00	1:00	0484 CR1	John, Healy
+APPLD NETWORKING TECH 2 Gr C/P			P	9:00	11:00	2:00	0482 CR3	Deirdre, O'Donovan
+PROJ MGT & COLLABORATIVE COMM Gr A/P	P	10:00	11:00	1:00	0436 CR5 	Gerard Harrison
+PROJ MGT & COLLABORATIVE COMM Gr C/P	P	11:00	12:00	1:00	0436 CR5	Gerard Harrison
+DATABASE MGMT Gr B/P					P	11:00	13:00	2:00	0481 CR4	Neil Keane
+APPLD NETWORKING TECH 2 Gr A/P			P	11:00	13:00	2:00	0482 CR3	Deirdre, O'Donovan
+ACCTG B/P								P	14:00	15:00	1:00	0484 CR1	Annette, Cosgrove
+MOBILE APPLICATIONS DEVELOPMENT Gr C/P	P	14:00	16:00	2:00	0470 		Daniel Cregg
+PROJ MGT & COLLABORATIVE COMM Gr B/P	P	15:00	16:00	1:00	0481 CR4	Gerard Harrison
+DATA STRUCTURES & ALGORITHMS Gr A/P		P	15:00	16:00	1:00	0484 CR1	John, Healy
+MOBILE APPLICATIONS DEVELOPMENT Gr A/P	P	16:00	18:00	2:00	0480 CR7	Daniel Cregg
+ADV. PROCEDURAL PROGRAMMING Gr B/P		P	16:00	18:00	2:00	0484 CR1	Martin Hynes
+MOBILE APPLICATIONS DEVELOPMENT Gr A/P	P	16:00	18:00	2:00	0470 		Daniel Cregg
+
+Thursday
+Activity								Ty	Start	End		Dura	Room				Staff
+DATA STRUCTURES & ALGORITHMS/L			L	9:00	10:00	1:00	0940				John, Healy
+ADV. PROCEDURAL PROGRAMMING/L			L	10:00	11:00	1:00	0996				Martin Hynes
+ACCTG/L									L	12:00	13:00	1:00	0940				Annette, Cosgrove
+ACCTG/L									L	13:00	14:00	1:00	0938				Annette, Cosgrove
+MOBILE APPLICATIONS DEVELOPMENT/L		L	15:00	16:00	1:00	0223				Daniel Cregg
+ADV. PROCEDURAL PROGRAMMING Gr A/P/01	P	16:00	18:00	2:00	0484 CR1			Martin Hynes
+
+Friday
+Activity							Ty	Start	End		Dura	Room						Staff
+DATABASE MGMT/L						L	9:00	11:00	2:00	0996						Neil Keane
+DATABASE MGMT Gr C/P				P	11:00	13:00	2:00	0436 CR5					Neil Keane
+APPLD NETWORKING TECH 2 Gr B/P		P	11:00	13:00	2:00	0482 CR3					Deirdre, O'Donovan
+
+
+
+--- THIRD YEAR ---
+	
+Monday
+Activity				Ty	Start	End		Dura	Room		Staff
+GRAPH THEORY Gr A/P		P	9:00	10:00	1:00	0145		Ian Mcloughlin
+Database Mgmt Sys/L		L	10:00	11:00	1:00	0994		Deirdre, O'Donovan
+MOBILE APPS/L			L	12:00	14:00	2:00	0223		Damien, Costello
+GRAPH THEORY Gr A/P		P	14:00	15:00	1:00	PF05		Ian Mcloughlin
+Software Testing Gr A/P	P	16:00	18:00	2:00	0481 CR4	Martin Hynes
+SERVER SIDE RAD Gr C/P	P	16:00	18:00	2:00	0436 CR5	Gerard Harrison
+
+Tuesday
+Activity						Ty	Start	End		Dura	Room		Staff
+Software Testing Gr C/P			P	9:00	11:00	2:00	0436 CR5	Martin Hynes
+Database Mgmt Systems Gr A/P	P	9:00	11:00	2:00	0481 CR4	Patrick Mannion
+MOBILE APPS Gr A/P				P	11:00	13:00	2:00	0470 		Damien, Costello
+Database Mgmt Systems Gr C/P	P	11:00	13:00	2:00	0482 CR3	Deirdre, O'Donovan
+GRAPH THEORY Gr B/P				P	12:00	13:00	1:00	0379		Ian Mcloughlin
+Software Testing Gr B/P			P	14:00	16:00	2:00	0436 CR5 	Martin Hynes
+SERVER SIDE RAD Gr B/P			P	16:00	18:00	2:00	0436 CR5 	Gerard Harrison
+Wednesday
+
+Activity						Ty	Start	End		Dura	Room	Staff
+GRAPH THEORY Gr C/P				P	9:00	10:00	1:00	0162	Ian Mcloughlin
+GRAPH THEORY/L					L	10:00	11:00	1:00	0938	Ian Mcloughlin
+PROFESSIONAL PRACTICE IN IT/L	L	11:00	12:00	1:00	0208	Damien, Costello
+SERVER SIDE RAD/L				L	13:00	14:00	1:00	0997	Gerard Harrison
+Software Testing/L				L	14:00	15:00	1:00	0994	Naomi, Regan - Hurley
+Software Testing/lL				L	15:00	16:00	1:00	0939	Martin Hynes
+Database Mgmt Sys/L				L	16:00	17:00	1:00	0995	Deirdre, O'Donovan
+
+Thursday
+Activity						Ty	Start	End		Dura	Room		Staff
+MOBILE APPS Gr B/P				P	9:00	11:00	2:00	PF18		Damien, Costello
+MOBILE APPS Gr C/P				P	11:00	13:00	2:00	PF18		Damien, Costello
+Database Mgmt Systems Gr C/P	P	14:00	16:00	2:00	0483 CR2	Deirdre, O'Donovan
+SERVER SIDE RAD Gr A/P			P	14:00	16:00	2:00	0436 CR5	Gerard Harrison
+
+Friday
+Activity						Ty	Start	End		Duration	Room		Staff
+Database Mgmt Systems Gr B/P	P	9:00	11:00	2:00		0482 CR3	Deirdre, O'Donovan
+GRAPH THEORY/L					L	11:00	12:00	1:00		0208		Ian Mcloughlin
+
+
+
+--- FOURTH YEAR ---
+
+Monday
+Activity					Ty	Start	End		Dura	Room	Staff
+Artificial Intelligence/L	L	10:00	11:00	1:00	0995	John, Healy
+Artificial Intelligence/P	P	11:00	13:00	2:00	0470 	John, Healy
+Theory of Algorithms/L		L	13:00	14:00	1:00	0379	Ian Mcloughlin
+
+Tuesday
+Activity						Ty	Start	End		Dura	Room	Staff
+GESTURE BASED UI DEVELOPMENT/L	L	9:00	11:00	2:00	0470	Damien, Costello
+Theory of Algorithms Gr A/P		P	11:00	12:00	1:00	PF18	Ian Mcloughlin
+Theory of Algorithms Gr B/P		P	13:00	14:00	1:00	0379	Ian Mcloughlin
+
+Wednesday
+Activity						Ty	Start	End		Dura	Room	Staff
+Applied Project & Minor Diss/L	L	10:00	12:00	2:00	PF06	Owen, Foley
+Theory of Algorithms/L			L	12:00	13:00	1:00	1033	Ian Mcloughlin
+Artificial Intelligence/P		P	13:00	14:00	1:00	0470 	John, Healy
+
+Thursday
+Activity						Ty	Start	End		Dura	Room		Staff
+Theory of Algorithms Gr A/P		P	9:00	10:00	1:00	0376		Ian Mcloughlin
+Software Eng/L					L	10:00	12:00	2:00	1031		Garrett Jordan
+Software Eng Gr B/P				P	12:00	13:00	1:00	0481 CR4	Garrett Jordan
+Software Eng Gr A/P				P	13:00	14:00	1:00	0482 CR3	Garrett Jordan
+Software Eng Gr A/P				P	13:00	14:00	1:00	PF18		Garrett Jordan
+Software Eng Gr B/P				P	14:00	15:00	1:00	PF18		Garrett Jordan
+
+Friday
+Activity							Ty	Start	End		Dura	Room	Staff
+GESTURE BASED UI DEVELOPMENT Gr A/P	P	9:00	11:00	2:00	PF18	Damien, Costello
+GESTURE BASED UI DEVELOPMENT Gr B/P	P	11:00	13:00	2:00	PF18	Damien, Costello
