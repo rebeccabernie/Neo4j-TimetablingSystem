@@ -7,6 +7,7 @@ Select days					- Weekdays
 Select type 				- List Timetable
 
 Copied all displayed information into text file and formated as needed.
+* Not displaying correctly on github but looks fine if opened in Notepad++
 
 
 --- FIRST YEAR ---
