@@ -1,6 +1,15 @@
-CREATE (n:Course {code: "KSOFG73", name: "BSc Software Development", level: 7, year: 3, semester: 6, group: "A"}) 
+CREATE (n:Course {cCode: "KSOFG73", cName: "BSc in Software Development", cLevel: 7, year: 3, semester: 6})
 
-CREATE (n:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
+CREATE (a:Group {group: "Gr A", course: "BSc in Software Development"})
+	 , (b:Group {group: "Gr B", course: "BSc in Software Development"})
+	 , (c:Group {group: "Gr C", course: "BSc in Software Development"})
+
+CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
+	  ,(b:Lecturer {name: "D O'Donovan", title: "Ms.", dept: "Comp Sci & Appl Physics"})
+	  ,(c:Lecturer {name: "D Costello", title: "Mr.", dept: "Comp Sci & Appl Physics"})
+	  ,(d:Lecturer {name: "M Hynes", title: "Mr.", dept: "Comp Sci & Appl Physics"})
+	  ,(e:Lecturer {name: "P Mannion", title: "Mr.", dept: "Comp Sci & Appl Physics"})
+	  ,(f:Lecturer {name: "G Harrison", title: "Mr.", dept: "Comp Sci & Appl Physics"})
 
 CREATE	 (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
 		,(b:Room {name: "0994", campus:"Dublin Rd", capacity: "90"})
@@ -19,6 +28,13 @@ CREATE	 (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
 		,(o:Room {name: "PF18", campus:"Dublin Rd", capacity: "16"})
 		,(p:Room {name: "0483 CR2", campus:"Dublin Rd", capacity: "20"})
 		,(q:Room {name: "0208", campus:"Dublin Rd", capacity: "60"})
+		
+CREATE (a:Module {name: "Graph Theory", moodleCode:"48901"})
+	 , (b:Module {name: "Database Management Systems", moodleCode:"40452"})
+	 , (c:Module {name: "Server Side RAD", moodleCode:"41895"})
+	 , (d:Module {name: "Professional Practice in IT", moodleCode:"41891"})
+	 , (e:Module {name: "Software Testing", moodleCode:"47197"})
+	 , (f:Module {name: "Mobile Applications Development", moodleCode:"41889"})
 
 	
 	
