@@ -80,19 +80,20 @@ Create (l)-[:TEACHES]->(m)
 
 -- Monday --
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Monday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0994"})
-Create (c)-[:ON]->(d),(d)-[:AT_10AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (c)-[:ON]->(d),(d)-[:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Monday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"0223"})
-Create (c)-[:ON]->(d),(d)-[:AT_12PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (c)-[:ON]->(d),(d)-[:HAS{time: "12pm", type: "Lecture", group:"All", duration:"2HR"}]->(m),(m)-[:IN{time: "12pm", type: "Lecture", group:"All", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"PF05"})
-Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "2pm", type: "Practical", group:"A", duration:"1HR"}]->(m),(m)-[:IN{time: "2pm", type: "Practical", group:"A", duration:"1HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0481 CR4"})
-Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Monday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
-Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(r)
+
 
 
 -- Tuesday --
@@ -175,16 +176,26 @@ DELETE r;
 
 ---- Delete a node by ID ----
 MATCH (n) where ID(n)=1
-OPTIONAL MATCH (p)-[r]-() //drops p's relations
-DELETE r,p
+OPTIONAL MATCH (n)-[r]-() //drops n's relations
+DELETE n,r
 
 -- Add a property to existing--
 MATCH (l:Lecturer {name:"P Mannion"})
 SET l.groups = 'Gr A'
 RETURN l
 
-	
-	
+
+ // Display Gr B on monday
+  match (g:Group)-[:ON]->(d:Day), (d:Day)-[]-(m:Module), (m:Module)-[]-(r:Room) where g.group = 'Gr B' and d.name = "Monday" return *
+  
+  MATCH (g:Group)-[]-(d:Day),(d:Day)-[:HAS{group:"A"}]-(m:Module), (m:Module)-[:IN{group: "A"}]-(r:Room) where g.group='Gr A' and d.name='Monday' return g,d,m,r
+
+//
+
+
+
+
+
 		
 	
 	
