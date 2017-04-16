@@ -128,40 +128,39 @@ APPLD NETWORKING TECH 2 Gr B/P		P	11:00	13:00	2:00	0482 CR3					Deirdre, O'Donov
 --- THIRD YEAR ---
 	
 Monday	
-Activity					Ty	Start	End		Dura	Room		Staff
-GRAPH THEORY Gr A/P			P	9:00	10:00	1:00	0145		Ian Mcloughlin
-Database Mgmt Sys/L			L	10:00	11:00	1:00	0994		Deirdre, O'Donovan
-MOBILE APPS/L				L	12:00	14:00	2:00	0223		Damien, Costello
-GRAPH THEORY Gr A/P			P	14:00	15:00	1:00	PF05		Ian Mcloughlin
-Software Testing Gr A/P		P	16:00	18:00	2:00	0481 CR4	Martin Hynes
-SERVER SIDE RAD Gr C/P		P	16:00	18:00	2:00	0436 CR5	Gerard Harrison
+Activity					Ty	Start	End		Dura			Room		Staff
+Database Mgmt Sys/L			L	10:00	11:00	1:00			0994		Deirdre, O'Donovan
+MOBILE APPS/L				L	12:00	14:00	2:00			0223		Damien, Costello
+GRAPH THEORY Gr A/P			P	14:00	15:00	1:00			PF05		Ian Mcloughlin
+Software Testing Gr A/P		P	16:00	18:00	2:00			0481 CR4	Martin Hynes
+SERVER SIDE RAD Gr C/P		P	16:00	18:00	2:00			0436 CR5	Gerard Harrison
 
 Tuesday
-Activity						Ty	Start	End		Dura	Room		Staff
-Software Testing Gr C/P			P	9:00	11:00	2:00	0436 CR5	Martin Hynes
-Database Mgmt Systems Gr A/P	P	9:00	11:00	2:00	0481 CR4	Patrick Mannion
-MOBILE APPS Gr A/P				P	11:00	13:00	2:00	0470 		Damien, Costello
-Database Mgmt Systems Gr C/P	P	11:00	13:00	2:00	0482 CR3	Deirdre, O'Donovan
-GRAPH THEORY Gr B/P				P	12:00	13:00	1:00	0379		Ian Mcloughlin
-Software Testing Gr B/P			P	14:00	16:00	2:00	0436 CR5 	Martin Hynes
-SERVER SIDE RAD Gr B/P			P	16:00	18:00	2:00	0436 CR5 	Gerard Harrison
-Wednesday
-
-Activity						Ty	Start	End		Dura	Room	Staff
-GRAPH THEORY Gr C/P				P	9:00	10:00	1:00	0162	Ian Mcloughlin
-GRAPH THEORY/L					L	10:00	11:00	1:00	0938	Ian Mcloughlin
-PROFESSIONAL PRACTICE IN IT/L	L	11:00	12:00	1:00	0208	Damien, Costello
-SERVER SIDE RAD/L				L	13:00	14:00	1:00	0997	Gerard Harrison
-Software Testing/L				L	14:00	15:00	1:00	0994	Naomi, Regan - Hurley
-Software Testing/lL				L	15:00	16:00	1:00	0939	Martin Hynes
-Database Mgmt Sys/L				L	16:00	17:00	1:00	0995	Deirdre, O'Donovan
-
-Thursday
-Activity						Ty	Start	End		Dura	Room		Staff
-MOBILE APPS Gr B/P				P	9:00	11:00	2:00	PF18		Damien, Costello
-MOBILE APPS Gr C/P				P	11:00	13:00	2:00	PF18		Damien, Costello
-Database Mgmt Systems Gr C/P	P	14:00	16:00	2:00	0483 CR2	Deirdre, O'Donovan
-SERVER SIDE RAD Gr A/P			P	14:00	16:00	2:00	0436 CR5	Gerard Harrison
+Activity						Ty	Start	End		Dura		Room		Staff
+Software Testing Gr C/P			P	9:00	11:00	2:00		0436 CR5	Martin Hynes
+Database Mgmt Systems Gr A/P	P	9:00	11:00	2:00		0481 CR4	Patrick Mannion
+MOBILE APPS Gr A/P				P	11:00	13:00	2:00		0470 		Damien, Costello
+Database Mgmt Systems Gr C/P	P	11:00	13:00	2:00		0482 CR3	Deirdre, O'Donovan
+GRAPH THEORY Gr B/P				P	12:00	13:00	1:00		0379		Ian Mcloughlin
+Software Testing Gr B/P			P	14:00	16:00	2:00		0436 CR5 	Martin Hynes
+SERVER SIDE RAD Gr B/P			P	16:00	18:00	2:00		0436 CR5 	Gerard Harrison
+Wednesday		
+		
+Activity						Ty	Start	End		Dura		Room		Staff
+GRAPH THEORY Gr C/P				P	9:00	10:00	1:00		0162		Ian Mcloughlin
+GRAPH THEORY/L					L	10:00	11:00	1:00		0938		Ian Mcloughlin
+PROFESSIONAL PRACTICE IN IT/L	L	11:00	12:00	1:00		0208		Damien, Costello
+SERVER SIDE RAD/L				L	13:00	14:00	1:00		0997		Gerard Harrison
+Software Testing/L				L	14:00	15:00	1:00		0994		Naomi, Regan - Hurley
+Software Testing/lL				L	15:00	16:00	1:00		0939		Martin Hynes
+Database Mgmt Sys/L				L	16:00	17:00	1:00		0995		Deirdre, O'Donovan
+		
+Thursday		
+Activity						Ty	Start	End		Dura		Room		Staff
+MOBILE APPS Gr B/P				P	9:00	11:00	2:00		PF18		Damien, Costello
+MOBILE APPS Gr C/P				P	11:00	13:00	2:00		PF18		Damien, Costello
+Database Mgmt Systems Gr C/P	P	14:00	16:00	2:00		0483 CR2	Deirdre, O'Donovan
+SERVER SIDE RAD Gr A/P			P	14:00	16:00	2:00		0436 CR5	Gerard Harrison
 
 Friday
 Activity						Ty	Start	End		Duration	Room		Staff

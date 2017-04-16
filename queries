@@ -40,10 +40,21 @@ CREATE (a:Module {name: "Graph Theory", moodleCode:"48901"})
 	  ,(e:Module {name: "Software Testing", moodleCode:"47197"})
 	  ,(f:Module {name: "Mobile Applications Development", moodleCode:"41889"})
 
+	  
+CREATE (m:Day {name: "Monday"})
+	  ,(t:Day {name: "Tuesday"})
+	  ,(w:Day {name: "Wednesday"})
+	  ,(u:Day {name: "Thursday"})
+	  ,(f:Day {name: "Friday"})
+
+CREATE (m:TimeSlot {name: "09:00", duration:"1HR"})
+,(m:Time {name: "09:00"})
+
 	
 	
 	---- Creating Relationships ----
 	
+-- Lecturer Teaches X --
 MATCH (l:Lecturer {name:"I McLoughlin"}), (m:Module {name: "Graph Theory"})
 Create (l)-[:TEACHES]->(m)
 
@@ -64,8 +75,32 @@ Create (l)-[:TEACHES]->(m)
 
 MATCH (l:Lecturer {name:"D Costello"}), (m:Module {name: "Professional Practice in IT"})
 Create (l)-[:TEACHES]->(m)
-	
- 	
+
+
+-- Monday --
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Monday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0994"})
+Create (c)-[:ON]->(d),(d)-[:AT_10AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Monday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"0223"})
+Create (c)-[:ON]->(d),(d)-[:AT_12PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"PF05"})
+Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0481 CR4"})
+Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Monday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
+Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+
+
+---- Return node and relationships ----
+MATCH (d:Day{name:"Monday"})-[r]-(z) return d,r,z
+
+---- Delete all instances of a specific relationship type ----
+MATCH ()-[r:HAS]-() 
+DELETE r;
 
 
 	
