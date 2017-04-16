@@ -8,6 +8,7 @@ CREATE (a:Group {group: "Gr A", course: "BSc in Software Development"})
 	  ,(b:Group {group: "Gr B", course: "BSc in Software Development"})
 	  ,(c:Group {group: "Gr C", course: "BSc in Software Development"})
 
+* Later added groups property, see misc queries below
 CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
 	  ,(b:Lecturer {name: "D O'Donovan", title: "Ms.", dept: "Comp Sci & Appl Physics"})
 	  ,(c:Lecturer {name: "D Costello", title: "Mr.", dept: "Comp Sci & Appl Physics"})
@@ -154,13 +155,33 @@ MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Thursday"}), (m:Module {name: "Se
 Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
 
 
----- Return node and relationships ----
+-- Friday --
+MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Friday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0482 CR3"})
+Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Friday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0208"})
+Create (c)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+
+
+	---- Misc Queries Used ----
+
+-- Return node and relationships --
 MATCH (d:Day{name:"Monday"})-[r]-(z) return d,r,z
 
 ---- Delete all instances of a specific relationship type ----
 MATCH ()-[r:HAS]-() 
 DELETE r;
 
+---- Delete a node by ID ----
+MATCH (n) where ID(n)=1
+OPTIONAL MATCH (p)-[r]-() //drops p's relations
+DELETE r,p
+
+-- Add a property to existing--
+MATCH (l:Lecturer {name:"P Mannion"})
+SET l.groups = 'Gr A'
+RETURN l
 
 	
 	
