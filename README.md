@@ -8,6 +8,4 @@ The database should store information about student groups/years, classrooms, le
 
 ### Structure   
 
-For demonstration purposes, I will be focusing on the Software Development Level 7 (Years 1 to 3) and Level 8 (Year 4) course. The database will contain information about the *current* semester for each year - i.e. Spring/Summer.
-
-[Design Document](https://github.com/rebeccabernie/TimetablingSystem/wiki/Design-Document)
+For demonstration purposes, I will be focusing on the Software Development Level 7 (Year 3) and course. The database will contain information about the *current* semester - i.e. Spring/Summer.
