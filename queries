@@ -117,6 +117,29 @@ MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Ser
 Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
 
 
+-- Wednesday --
+MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0162"})
+Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0938"})
+Create (c)-[:ON]->(d),(d)-[:AT_10AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Professional Practice in IT"}), (r:Room {name:"0208"})
+Create (c)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0997"})
+Create (c)-[:ON]->(d),(d)-[:AT_1PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0994"})
+Create (c)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0939"})
+Create (c)-[:ON]->(d),(d)-[:AT_3PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0995"})
+Create (c)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+
+
 ---- Return node and relationships ----
 MATCH (d:Day{name:"Monday"})-[r]-(z) return d,r,z
 
