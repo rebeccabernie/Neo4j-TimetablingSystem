@@ -94,6 +94,28 @@ MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Monday"}), (m:Module {name: "Serv
 Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
 
 
+-- Tuesday --
+MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0436 CR5"})
+Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0481 CR4"})
+Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"0470"})
+Create (g)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0482 CR3"})
+Create (g)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0379"})
+Create (g)-[:ON]->(d),(d)-[:AT_12PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0436 CR5"})
+Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
+MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
+Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+
 
 ---- Return node and relationships ----
 MATCH (d:Day{name:"Monday"})-[r]-(z) return d,r,z
