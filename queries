@@ -1,8 +1,12 @@
+
+	---- Creating Nodes ----
+
+
 CREATE (n:Course {cCode: "KSOFG73", cName: "BSc in Software Development", cLevel: 7, year: 3, semester: 6})
 
 CREATE (a:Group {group: "Gr A", course: "BSc in Software Development"})
-	 , (b:Group {group: "Gr B", course: "BSc in Software Development"})
-	 , (c:Group {group: "Gr C", course: "BSc in Software Development"})
+	  ,(b:Group {group: "Gr B", course: "BSc in Software Development"})
+	  ,(c:Group {group: "Gr C", course: "BSc in Software Development"})
 
 CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
 	  ,(b:Lecturer {name: "D O'Donovan", title: "Ms.", dept: "Comp Sci & Appl Physics"})
@@ -11,34 +15,55 @@ CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl P
 	  ,(e:Lecturer {name: "P Mannion", title: "Mr.", dept: "Comp Sci & Appl Physics"})
 	  ,(f:Lecturer {name: "G Harrison", title: "Mr.", dept: "Comp Sci & Appl Physics"})
 
-CREATE	 (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
-		,(b:Room {name: "0994", campus:"Dublin Rd", capacity: "90"})
-		,(c:Room {name: "0223", campus:"Dublin Rd", capacity: "60"})
-		,(d:Room {name: "PF05", campus:"Dublin Rd", capacity: "16"})
-		,(e:Room {name: "0481 CR4", campus:"Dublin Rd", capacity: "16"})
-		,(f:Room {name: "0436 CR5", campus:"Dublin Rd", capacity: "20"})
-		,(g:Room {name: "0470", campus:"Dublin Rd", capacity: "23"})
-		,(h:Room {name: "0482 CR3", campus:"Dublin Rd", capacity: "20"})
-		,(i:Room {name: "0379", campus:"Dublin Rd", capacity: "16"})
-		,(j:Room {name: "0162", campus:"Dublin Rd", capacity: "16"})
-		,(k:Room {name: "0938", campus:"Dublin Rd", capacity: "60"})
-		,(l:Room {name: "0997", campus:"Dublin Rd", capacity: "60"})
-		,(m:Room {name: "0939", campus:"Dublin Rd", capacity: "90"})
-		,(n:Room {name: "0995", campus:"Dublin Rd", capacity: "90"})
-		,(o:Room {name: "PF18", campus:"Dublin Rd", capacity: "16"})
-		,(p:Room {name: "0483 CR2", campus:"Dublin Rd", capacity: "20"})
-		,(q:Room {name: "0208", campus:"Dublin Rd", capacity: "60"})
+CREATE (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
+	  ,(b:Room {name: "0994", campus:"Dublin Rd", capacity: "90"})
+	  ,(c:Room {name: "0223", campus:"Dublin Rd", capacity: "60"})
+	  ,(d:Room {name: "PF05", campus:"Dublin Rd", capacity: "16"})
+	  ,(e:Room {name: "0481 CR4", campus:"Dublin Rd", capacity: "16"})
+	  ,(f:Room {name: "0436 CR5", campus:"Dublin Rd", capacity: "20"})
+	  ,(g:Room {name: "0470", campus:"Dublin Rd", capacity: "23"})
+	  ,(h:Room {name: "0482 CR3", campus:"Dublin Rd", capacity: "20"})
+	  ,(i:Room {name: "0379", campus:"Dublin Rd", capacity: "16"})
+	  ,(j:Room {name: "0162", campus:"Dublin Rd", capacity: "16"})
+	  ,(k:Room {name: "0938", campus:"Dublin Rd", capacity: "60"})
+	  ,(l:Room {name: "0997", campus:"Dublin Rd", capacity: "60"})
+	  ,(m:Room {name: "0939", campus:"Dublin Rd", capacity: "90"})
+	  ,(n:Room {name: "0995", campus:"Dublin Rd", capacity: "90"})
+	  ,(o:Room {name: "PF18", campus:"Dublin Rd", capacity: "16"})
+	  ,(p:Room {name: "0483 CR2", campus:"Dublin Rd", capacity: "20"})
+	  ,(q:Room {name: "0208", campus:"Dublin Rd", capacity: "60"})
 		
 CREATE (a:Module {name: "Graph Theory", moodleCode:"48901"})
-	 , (b:Module {name: "Database Management Systems", moodleCode:"40452"})
-	 , (c:Module {name: "Server Side RAD", moodleCode:"41895"})
-	 , (d:Module {name: "Professional Practice in IT", moodleCode:"41891"})
-	 , (e:Module {name: "Software Testing", moodleCode:"47197"})
-	 , (f:Module {name: "Mobile Applications Development", moodleCode:"41889"})
+	  ,(b:Module {name: "Database Management Systems", moodleCode:"40452"})
+	  ,(c:Module {name: "Server Side RAD", moodleCode:"41895"})
+	  ,(d:Module {name: "Professional Practice in IT", moodleCode:"41891"})
+	  ,(e:Module {name: "Software Testing", moodleCode:"47197"})
+	  ,(f:Module {name: "Mobile Applications Development", moodleCode:"41889"})
 
 	
 	
+	---- Creating Relationships ----
 	
+MATCH (l:Lecturer {name:"I McLoughlin"}), (m:Module {name: "Graph Theory"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"D O'Donovan"}), (m:Module {name: "Database Management Systems"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"P Mannion"}), (m:Module {name: "Database Management Systems"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"M Hynes"}), (m:Module {name: "Software Testing"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"G Harrison"}), (m:Module {name: "Server Side RAD"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"D Costello"}), (m:Module {name: "Mobile Applications Development"})
+Create (l)-[:TEACHES]->(m)
+
+MATCH (l:Lecturer {name:"D Costello"}), (m:Module {name: "Professional Practice in IT"})
+Create (l)-[:TEACHES]->(m)
 	
  	
 
