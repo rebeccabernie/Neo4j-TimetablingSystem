@@ -1,0 +1,37 @@
+CREATE (n:Course {code: "KSOFG73", name: "BSc Software Development", level: 7, year: 3, semester: 6, group: "A"}) 
+
+CREATE (n:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
+
+CREATE	 (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
+		,(b:Room {name: "0994", campus:"Dublin Rd", capacity: "90"})
+		,(c:Room {name: "0223", campus:"Dublin Rd", capacity: "60"})
+		,(d:Room {name: "PF05", campus:"Dublin Rd", capacity: "16"})
+		,(e:Room {name: "0481 CR4", campus:"Dublin Rd", capacity: "16"})
+		,(f:Room {name: "0436 CR5", campus:"Dublin Rd", capacity: "20"})
+		,(g:Room {name: "0470", campus:"Dublin Rd", capacity: "23"})
+		,(h:Room {name: "0482 CR3", campus:"Dublin Rd", capacity: "20"})
+		,(i:Room {name: "0379", campus:"Dublin Rd", capacity: "16"})
+		,(j:Room {name: "0162", campus:"Dublin Rd", capacity: "16"})
+		,(k:Room {name: "0938", campus:"Dublin Rd", capacity: "60"})
+		,(l:Room {name: "0997", campus:"Dublin Rd", capacity: "60"})
+		,(m:Room {name: "0939", campus:"Dublin Rd", capacity: "90"})
+		,(n:Room {name: "0995", campus:"Dublin Rd", capacity: "90"})
+		,(o:Room {name: "PF18", campus:"Dublin Rd", capacity: "16"})
+		,(p:Room {name: "0483 CR2", campus:"Dublin Rd", capacity: "20"})
+		,(q:Room {name: "0208", campus:"Dublin Rd", capacity: "60"})
+
+	
+	
+	
+	
+ 	
+
+
+	
+	
+		
+	
+	
+		
+
+	
