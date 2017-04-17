@@ -140,7 +140,7 @@ Activity						Ty	Start	End		Dura		Room		Staff
 Software Testing Gr C/P			P	9:00	11:00	2:00		0436 CR5	Martin Hynes
 Database Mgmt Systems Gr A/P	P	9:00	11:00	2:00		0481 CR4	Patrick Mannion
 MOBILE APPS Gr A/P				P	11:00	13:00	2:00		0470 		Damien, Costello
-Database Mgmt Systems Gr C/P	P	11:00	13:00	2:00		0482 CR3	Deirdre, O'Donovan
+//Database Mgmt Systems Gr C/P	P	11:00	13:00	2:00		0482 CR3	Deirdre, O'Donovan
 GRAPH THEORY Gr B/P				P	12:00	13:00	1:00		0379		Ian Mcloughlin
 Software Testing Gr B/P			P	14:00	16:00	2:00		0436 CR5 	Martin Hynes
 SERVER SIDE RAD Gr B/P			P	16:00	18:00	2:00		0436 CR5 	Gerard Harrison

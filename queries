@@ -186,10 +186,8 @@ match (a)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) where d.name="Tuesday" return *
 -- Display all lectures for the week --
 match (c:Course)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) return *
 
-
-
-
-		
+-- Display lecturer's classes for the week --
+match (a)-[:ON]-(d:Day)-[:HAS]-(m:Module)-[:IN]-(r),(m:Module)<-[:TEACHES]-(l:Lecturer{name:"D Costello"}) return *
 	
 	
 		
