@@ -6,14 +6,30 @@ This is the Design Document for timetabling system using Neo4j, completed as par
 
 For this project, we were asked to design a prototype database that would store timetabling information.  Information was to relevant to Galway Mayo Institute of Technology and could be obtained through GMIT's own timetabling website or by other means.
 
-## Data To Be Stored
-
-
-Most timetables, regardless of what college/institute they relate to, contain the same information - times, days, subjects and rooms. I used GMIT's own [timetabling website](http://timetable.gmit.ie/sws1617/(S(anusup452nzd3yeefh4zyr45))/default.aspx) to see what basic data needed to be stored and came to the conclusion that modules, lecturers, days, times and rooms were the main components. 
-
 ## How Data Was Obtained
 
-After initially planning to do the whole Software Development course (Years 1-3, 4), I decided to stick to Year 3 to keep the database relatively small. While adding extra years would not have been difficult (I had the data already pulled from the timetabling website), I felt it wouldn't have made it any better as the basic functionality is the same year to year. As this is only a prototype database, I felt setting out structure and logic was more important than creating a very large database.
+After initially planning to do the whole Software Development course (Years 1-3, 4), I decided to stick to Year 3 to keep the database relatively small. While adding extra years would not have been difficult (I had the data already pulled from the timetabling website), I felt it wouldn't have made it any better as the basic functionality is the same year to year. As this is only a prototype database, I felt setting out structure and logic was more important than creating a very large database.  
+
+On the GMIT [Timetabling Website](http://timetable.gmit.ie/sws1617/(S(315aqmvve2tdkz45b3n32z55))/default.aspx), I selected the following -
+
+	Department			Galway Campus - Dept of Computer Science & Applied Physics
+	Program				G-KSOFG73 BSc in Computing in Software Development L7 Yr3 Sem 6
+	Week(s)				Spring/Summer - January 2017 to June 2017
+	Day(s)				Weekdays
+	Time Range			Working Day (08:00 - 18:00)
+	Type of Report		List Timetable
+	
+I used the list view as it was formatted in rows and columns and allowed data to be selected as plain text, making it easier to manipulate in a text editor. List view also gave a list of lecturer names, rather than their numbers in the grid view. I ended up with a text file, containing the following information - 
+
+	Module, Type(Lecture/Practical), Start, End, Duration, Room, Lecturer
+	
+All of the data can be seen in the [AllTimetablesList File](https://github.com/rebeccabernie/TimetablingSystem/blob/master/AllTimetablesList.txt).
+
+## Data To Be Stored
+
+Most timetables, regardless of what college/institute they relate to, contain the same information - times, days, subjects and rooms. I used GMIT's own timetabling website to see what basic data needed to be stored and came to the conclusion that 
+
+
 
 ## Structure
 
