@@ -1,18 +1,20 @@
-# Design Document - Timetabling System using Neo4j 
+# Design Document - Timetabling System Using Neo4j 
+
+> Author:	Rebecca Kane, G00320698
 
 This is the Design Document for timetabling system using Neo4j, completed as part of 3rd Year Software Development module Graph Theory. The document outlines my reasoning for the general structure of the database, as well as some useful example queries.
 
 
 ## Introduction
 
-For this project, we were asked to design a prototype database that would store timetabling information.  Information was to relevant to Galway Mayo Institute of Technology and could be obtained through GMIT's own timetabling website or by other means.
+For this project, we were asked to design a prototype database that would store timetabling information.  Information was to be relevant to Galway Mayo Institute of Technology and could be obtained through GMIT's own [Timetabling Website](http://timetable.gmit.ie/) or by other means.
 
 When running any query in Neo4j that filters relationship type, make sure autocomplete is off. If not, the correct nodes will display all of their relationships, not just the filtered ones.
 
 
 ## How Data Was Obtained
 
-Before starting anything in the database, I gathered information from the GMIT [Timetabling Website](http://timetable.gmit.ie/sws1617/(S(315aqmvve2tdkz45b3n32z55))/default.aspx).
+Before starting anything in the database, I gathered information from the GMIT [Timetabling Website](http://timetable.gmit.ie/) under "Academic Year 2016/17" and "Programmes".
 
 I selected the following, repeating for each year of the course -
 
@@ -24,11 +26,11 @@ I selected the following, repeating for each year of the course -
 	Type	 			List Timetable
 
 	
-I used the list view as it was formatted in rows and columns and allowed data to be selected as plain text, making it easier to manipulate in a text editor. List view also gave a list of lecturer names, rather than their numbers in the grid view. I ended up with a text file, containing the following information - 
+I used the list view as it was formatted in rows and columns and allowed data to be selected as plain text, making it easier to manipulate in a text editor. List view also gave a list of lecturer names rather than their staff number, unlike the grid view. I ended up with a text file formatted by tabs, containing the following information - 
 
-	Module, Type(Lecture/Practical), Start, End, Duration, Room, Lecturer
+	Module	 Type(Lecture/Practical)	  Start	End		Duration	Room	Lecturer
 	
-Grid view was used for obtaining information on room sizes as capacity is displayed with each entry, unlike list view which does not display room capacities.
+Grid view was used for obtaining information on room sizes because it displays capacity with each entry, unlike list view which does not display room capacities.
 	
 All of the data can be seen in the [AllTimetablesList File](https://github.com/rebeccabernie/TimetablingSystem/blob/master/AllTimetablesList.txt).	  
 
@@ -46,7 +48,7 @@ Most timetables, regardless of what college/institute they relate to, contain th
 - Lecturers
 - Rooms
 
-Time Slots, Duration and Type (Lecture or Practical) are also contained in the database, but not as nodes. Days of the week are nodes, but can also be searched through relationship properties.
+Time Slots, Duration and Type (Lecture or Practical) are also contained in the database, but not as nodes. Days of the week are nodes, but can also be searched through relationship properties.  
 Module nodes contain the Moodle Code for the course, obtained from [GMIT's LearnOnline](https://learnonline.gmit.ie/).  
 Lecturer nodes contain information such as title and department, pulled from the [Staff Directory](https://www.gmit.ie/staff-directory).  
 Room nodes contain their location (campus) and capacity.
@@ -56,7 +58,7 @@ Room nodes contain their location (campus) and capacity.
 I started by created nodes in groups - year group, class groups, lecturers, rooms, modules, and days, in that order. All information stored in the AllTimetablesList file is formatted with tabs, so it was quick and easy generate queries. For example, to generate rooms I started off with a blank query with a row for each room:
 
 	CREATE (a:Room {name: "", campus:"", capacity: ""})
-	  ,(b:Room {name: "", campus:"", capacity: ""})
+		  ,(b:Room {name: "", campus:"", capacity: ""})
 	      ,(c:Room {name: "", campus:"", capacity: ""})
 		  
 		 etc, etc
@@ -68,7 +70,7 @@ I then moved on to creating relationships. The simplest relationships in the dat
 	MATCH (l:Lecturer {name:"I McLoughlin"}), (m:Module {name: "Graph Theory"})
 	Create (l)-[:TEACHES]->(m)
 	
-Match finds the lecturer and module, and create adds a relationship with the label "TEACHES" between the two. 
+Match finds the lecturer and module, and create adds a relationship (*from* Lecturer *to* Module) with the label "TEACHES" between the two. 
 
 Once lecturers and modules had been tied together, I moved onto student groups. I decided to create relationships day by day because the AllTimetablesList file goes by days - this meant I'd be less likely to miss anything by going in the same order. These relationships were more complicated than Lecturer-Module ones, and were created as follows:
 
@@ -77,9 +79,9 @@ Once lecturers and modules had been tied together, I moved onto student groups. 
 	
 This query finds the specified Year Group, Day, Module and Room. It then ties Year Group to Day (with the label "ON"), then Day to Module (labelled as "HAS"), and finally the Module to the Room (labelled "IN"). In English, the above relationship looks like:  
 __BSc in Software Development -On- Monday -Has- Database Management Systems -In- 0994__  
-I related nodes in this way because when searching a timetable, the most common order is by course and then by day - it wouldn't make much sense if someone tried to search by day and *then* narrow it down to their course. I also added properties on the IN and HAS relationships (*:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}*), to allow for filtering when searching. Both relationships have the same properties.
+I related nodes in this way because when searching a timetable, the most common order is by course and then by day - it wouldn't make much sense if someone tried to search by day and *then* narrow it down to their course. I also added properties on the IN and HAS relationships - *:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}* - to allow for filtering when searching. Both relationship types have the same properties.
 
-I ran into issues when trying to query a room's availability on a particular day, so I had to add a day property to IN and HAS relationships. I decided the easiest way to do this was search relationships by id and edit from there. I found this solution for how to delete a relationship by ID on a [StackOverflow Question](http://stackoverflow.com/questions/28185623/simple-way-to-delete-a-relationship-by-id-in-neo4j-cypher), and simply edited it to set a property instead :
+I ran into issues when trying to query a room's availability on a particular day, so I had to add a day property to IN and HAS relationships. I decided the easiest way to do this was search relationships by ID and edit from there. I found this solution for how to delete a relationship by ID on a [StackOverflow Question](http://stackoverflow.com/questions/28185623/simple-way-to-delete-a-relationship-by-id-in-neo4j-cypher), and simply edited it to set a property instead :
 
 	Match ()-[r]-() Where ID(r)=303 
 	set r.day="Wednesday"
@@ -91,7 +93,7 @@ After creating all nodes, I discovered that the timetable had been changed at st
 	Match ()-[r]-() Where ID(r)=200
 	Delete r
 
-This works the same way as the SET query above, except it deletes the relationship. I also used this when deleting all instances of a specific relationship type, for example ()-[r:HAS]-() will delete all instances of relationships labelled HAS. This came in very useful when I was figuring out the best way to relate different nodes was.
+This works the same way as the SET query above, except it deletes the relationship. I also used this when deleting all instances of a specific relationship type, for example ()-[r:HAS]-() will delete all instances of relationships labelled HAS. This came in very useful when I was figuring out the best way to relate different nodes.
 
 I kept a detailed account of all queries I used when creating the database - the text file can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/queries). All of the above queries can be found in the file.
 	
@@ -99,15 +101,15 @@ I kept a detailed account of all queries I used when creating the database - the
 
 As mentioned above, I decided to set the main components of the database as nodes. The more experience I gained with Neo4j, the more I felt that nodes were a lot easier search for than, for example, relationships. Node colours are as follows:  
 
-- Red: 		Year Group
-- Green: 	Class Group
-- Yellow: 	Days of the Week
-- Blue:		Modules 
-- Purple:	Lecturers
-- Pink:		Rooms
+- Orange: Year Group
+- Green: Class Group
+- Yellow: Days of the Week
+- Blue: Modules 
+- Purple: Lecturers
+- Red: Rooms
 
-Modules tie everything together in any timetable, so it made sense to have them act as a link between different nodes in this database.  Lecturers relate to Modules, which in turn relate to rooms and student groups - meaning a lecturer can easily find out what module they have with what student group and in what room. 
-By running the following query, the lecturer is presented with their own node, whatever subjects they teach, and the rooms they're in. The lecturer can also see what group they have in what room, for how long, and at what time by looking at the relationship properties between module and room.
+Modules/subjects tie everything together in any school or college timetable, so it made sense to have them act as a link between different nodes in this database.  Lecturers relate to Modules, which in turn relate to rooms and student groups - meaning a lecturer can easily find out what module they have with what student group and in what room. 
+By running the following query, the lecturer is presented with their own node, whatever subjects they teach, and the rooms they're in. The lecturer can also see what group they have, in what room, for how long, and at what time by looking at the relationship properties between module and room.
 
 	match (l:Lecturer)-[t:TEACHES]-(m:Module)-[i:IN]-(r:Room) where l.name = "I McLoughlin" return *
 	
@@ -115,13 +117,13 @@ By running the following query, the lecturer is presented with their own node, w
 	
 Similarly, student groups can easily find out what module they have in what room and with what lecturer.
 
-When dealing with lectures and how to differentiate them from practicals when searching, I decided to use the Year Group node to represent the year as a whole. The entire year group has the same lectures, but not necessarily the same lab groups. I had considered simply tying all lab groups to a lecture, but felt that it made the database more cluttered and slightly less searchable. By tying the year group to lectures, you can easily search for *just* lectures or *just* practicals. For example:
+When dealing with lectures and how to differentiate them from practicals when searching, I decided to use the Year Group node to represent the year as a whole. The entire year group has the same lectures, but not necessarily the same lab groups. I had considered simply tying all lab groups to a lecture, but felt that it would have made the database more cluttered and slightly less searchable. By tying the year group to lectures, you can easily search for *just* lectures or *just* practicals. For example:
 
 	match (c:Course)-[o:ON]-(d:Day)-[h:HAS]-(m:Module)-[i:IN]-(r:Room) where h.type = "Lecture" and i.type = "Lecture" return *
 	
 ![Just Lectures](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/alllectures.png "Just Lectures")
 
-I had considered storing time slots as nodes, but felt this would have made things too complicated due to the amount of time slots as well as timeslots overlapping every day. In the end I opted for making timeslots a property on relationships, along with type (lecture or practical) and duration. This makes it much easier to grab more information from the database, with smaller queries. For example, to see all Group A Labs for the week all you need to run is:
+I had considered storing time slots as nodes, but felt this would have made things too complicated due to the amount of time slots as well as time slots overlapping every day. In the end I opted for making timeslots a property on relationships, along with type (lecture or practical) and duration. This makes it much easier to grab more information from the database, with smaller queries. For example, to see all Group A Labs for the week all you need to run is:
 
 	match (g:Group{group:"Gr A"})-[o:ON]-(d:Day)-[h:HAS]-(m)-[i:IN]-(r) where h.group = "A" and i.group = "A" return *
 	
@@ -142,7 +144,7 @@ While creating the database initially proved challenging, I got more and more us
 
 Displaying the whole database at once can be somewhat cluttered but if searches are filtered well, Neo4j automatically displays information well. Colour coding was a great asset when testing queries, as it gave a quick idea as to whether or not the query was in fact displaying what I wanted. It also helped a lot in figuring out the general efficiency of the database because I could easily see if different nodes looked like they should or shouldn't be related.
 
-By recording all queries used I've made it easy to expand this database in the future - it would just be a case of pulling data from the timetabling website and generating queries in the same way I did for this prototype. Any queries I used, whether for creating, editing or searching, were all very quick -  mostly 2 to 10 milliseconds but very occassionally up to 80/90 milliseconds. The only issue I ran into with speed was when I would forget to clear the slides - if I had 30/40 slides in the queue then I found the whole console would get slow, but this is human error more than anything else. As a whole, Neo4j executes varying queries extremely quickly.
+By recording all queries used, I've made it easy to expand this database in the future - it would just be a case of pulling data from the timetabling website and generating queries in the same way I did for this prototype. Any queries I used, whether for creating, editing or searching, were all very quick -  mostly 2 to 10 milliseconds but very occassionally up to 80/90 milliseconds. The only issue I ran into with speed was when I would forget to clear the slides - if I had 30/40 slides in the queue then I found the whole console would get slow, but this is human error more than anything else. As a whole, Neo4j executes varying queries extremely quickly.
 
 To summarise, this project has highlighted the advantages of using Neo4j as a database, and also made me more comfortable with it and the Cypher language. I'm sure there are more efficient ways of storing this data or creating and querying the data, but I felt my design plans and logic were all very reasonable.
 
