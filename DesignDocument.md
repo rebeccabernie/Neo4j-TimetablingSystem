@@ -62,7 +62,7 @@ By running the following query, the lecturer is presented with their own node, w
 
 	match (l:Lecturer)-[t:TEACHES]-(m:Module)-[i:IN]-(r:Room) where l.name = "I McLoughlin" return *
 	
-![Lecturer Search](https://lh3.googleusercontent.com/vfK1pzdYyJnkcGNaAAFs9kGUUqY26N3IdxqgchpWr34QlUFXCnt9df3nB600Ts2HGq22b1hyBNt-FCdUoV6Z3MC1QgHuwZ-ZCyuPIp-SrEh2uNPamE1T6d1Fk6KAJIxDh08vC_lXvuLs-NQE1FbWY2NRUSm1JyARMJzhqkW3xu2IvZ7G0TcYG0zVIkNUehdRCpbVw6yJEYaG-Ei82jghCOt6P9Yq1ndw_WrEx-lH9MnmWSfGxoTxFJPgqEA2S0034IunwqEqlTTa1ykRyo0M2oarnjVLMRMmxI_JBhxWeXsQlBPy7WXfVRqkijQmZoqOUUdYq0BTek2ORpELzklZaF3wVGvau_SfMQBiXumxtoKZvNN5cZx825V575cbeUp6TEr_MTapGOlSjeKGgJAZ3-ahPfF-f7PjqTE0-qBAPHcDpY-xe6ER_3goRJVU7JOcvrp6raEgM2XV3DRFTOvoBzVOgUC0r6VBz3THv_T1um7yaK3MNsII061JzNN3glPe2_TZrvZOHAZYEe-mDQ2APa3LuHD5i7Y0LGzo6jVTlxKtBdQvMRXUApBQSHof3fj4g6RyHIiluBpWDSL3iwu36iQegUO-TKonT7YAiIGk_E90Gg0=w1064-h631-no "Lecturer Search")
+![Lecturer Search](https://goo.gl/photos/Wy4eX4fgg7RDaSWH6 "Lecturer Search")
 	
 Similarly, student groups can easily find out what module they have in what room and with what lecturer.
 
