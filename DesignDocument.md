@@ -62,7 +62,7 @@ By running the following query, the lecturer is presented with their own node, w
 
 	match (l:Lecturer)-[t:TEACHES]-(m:Module)-[i:IN]-(r:Room) where l.name = "I McLoughlin" return *
 	
-![Lecturer Search](https://goo.gl/photos/Wy4eX4fgg7RDaSWH6 "Lecturer Search")
+![Lecturer Search](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/lecturerclasses.png "Lecturer Search")
 	
 Similarly, student groups can easily find out what module they have in what room and with what lecturer.
 
