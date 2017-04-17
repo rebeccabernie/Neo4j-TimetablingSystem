@@ -1,8 +1,8 @@
 # Design Document - Timetabling System Using Neo4j 
 
-> Author - 
-> Rebecca Kane, G00320698
-> Third Year BSc Software Development Student
+> Author -   
+> Rebecca Kane, G00320698  
+> Third Year BSc Software Development Student  
 
 This is the Design Document for timetabling system using Neo4j, completed as part of 3rd Year Software Development module Graph Theory. The document outlines my reasoning for the general structure of the database, as well as some useful example queries.
 
@@ -97,7 +97,7 @@ After creating all nodes, I discovered that the timetable had been changed at st
 
 This works the same way as the SET query above, except it deletes the relationship. I also used this when deleting all instances of a specific relationship type, for example ()-[r:HAS]-() will delete all instances of relationships labelled HAS. This came in very useful when I was figuring out the best way to relate different nodes.
 
-I kept a detailed account of all queries I used when creating the database - the text file can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/queries). All of the above queries can be found in the file.
+I kept a detailed account of all queries I used when creating the database in a [Queries](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/queries.txt) file. All of the above queries can be found in the file.
 	
 ## Structure and Relationship Logic
 
