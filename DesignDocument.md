@@ -1,6 +1,8 @@
 # Design Document - Timetabling System Using Neo4j 
 
-> Author:	Rebecca Kane, G00320698
+> Author - 
+> Rebecca Kane, G00320698
+> Third Year BSc Software Development Student
 
 This is the Design Document for timetabling system using Neo4j, completed as part of 3rd Year Software Development module Graph Theory. The document outlines my reasoning for the general structure of the database, as well as some useful example queries.
 
@@ -28,11 +30,11 @@ I selected the following, repeating for each year of the course -
 	
 I used the list view as it was formatted in rows and columns and allowed data to be selected as plain text, making it easier to manipulate in a text editor. List view also gave a list of lecturer names rather than their staff number, unlike the grid view. I ended up with a text file formatted by tabs, containing the following information - 
 
-	Module	 Type(Lecture/Practical)	  Start	End		Duration	Room	Lecturer
+	Module	 Type(Lecture/Practical)	Start	End		Duration	Room	Lecturer
 	
 Grid view was used for obtaining information on room sizes because it displays capacity with each entry, unlike list view which does not display room capacities.
 	
-All of the data can be seen in the [AllTimetablesList File](https://github.com/rebeccabernie/TimetablingSystem/blob/master/AllTimetablesList.txt).	  
+All of the data can be seen in the [AllTimetablesList File](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/AllTimetablesList.txt).
 
 
 ## Data To Be Stored
@@ -58,7 +60,7 @@ Room nodes contain their location (campus) and capacity.
 I started by created nodes in groups - year group, class groups, lecturers, rooms, modules, and days, in that order. All information stored in the AllTimetablesList file is formatted with tabs, so it was quick and easy generate queries. For example, to generate rooms I started off with a blank query with a row for each room:
 
 	CREATE (a:Room {name: "", campus:"", capacity: ""})
-		  ,(b:Room {name: "", campus:"", capacity: ""})
+		,(b:Room {name: "", campus:"", capacity: ""})
 	      ,(c:Room {name: "", campus:"", capacity: ""})
 		  
 		 etc, etc
@@ -95,7 +97,7 @@ After creating all nodes, I discovered that the timetable had been changed at st
 
 This works the same way as the SET query above, except it deletes the relationship. I also used this when deleting all instances of a specific relationship type, for example ()-[r:HAS]-() will delete all instances of relationships labelled HAS. This came in very useful when I was figuring out the best way to relate different nodes.
 
-I kept a detailed account of all queries I used when creating the database - the text file can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/queries). All of the above queries can be found in the file.
+I kept a detailed account of all queries I used when creating the database - the text file can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/queries). All of the above queries can be found in the file.
 	
 ## Structure and Relationship Logic
 
@@ -113,7 +115,7 @@ By running the following query, the lecturer is presented with their own node, w
 
 	match (l:Lecturer)-[t:TEACHES]-(m:Module)-[i:IN]-(r:Room) where l.name = "I McLoughlin" return *
 	
-![Lecturer Search](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/lecturerclasses.png "Lecturer Search")
+![Lecturer Search](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/QueryScreenshots/lecturerclasses.png "Lecturer Search")
 	
 Similarly, student groups can easily find out what module they have in what room and with what lecturer.
 
@@ -121,19 +123,19 @@ When dealing with lectures and how to differentiate them from practicals when se
 
 	match (c:Course)-[o:ON]-(d:Day)-[h:HAS]-(m:Module)-[i:IN]-(r:Room) where h.type = "Lecture" and i.type = "Lecture" return *
 	
-![Just Lectures](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/alllectures.png "Just Lectures")
+![Just Lectures](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/QueryScreenshots/alllectures.png "Just Lectures")
 
 I had considered storing time slots as nodes, but felt this would have made things too complicated due to the amount of time slots as well as time slots overlapping every day. In the end I opted for making timeslots a property on relationships, along with type (lecture or practical) and duration. This makes it much easier to grab more information from the database, with smaller queries. For example, to see all Group A Labs for the week all you need to run is:
 
 	match (g:Group{group:"Gr A"})-[o:ON]-(d:Day)-[h:HAS]-(m)-[i:IN]-(r) where h.group = "A" and i.group = "A" return *
 	
-![Group A Labs](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/groupAlabs.png "Group A Labs")
+![Group A Labs](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/QueryScreenshots/groupAlabs.png "Group A Labs")
 	
 Searching rooms is also an integral part of any timetable, so I felt having the ability to display when a room is occupied was important. Unfortunately there's no clear way of displaying when a room is free, but you can display all instances where the room is occupied. For example, if you want to see when room 0994 is occupied on a Wednesday, run the following query:
 
 	match (r:Room)-[i:IN]-(m:Module) where i.day="Wednesday" and r.name="0994" return *
 	
-![Room Availablility](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/roomdeetswednesday.png "Room Availability")
+![Room Availablility](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/QueryScreenshots/roomdeetswednesday.png "Room Availability")
 	
 Hovering over a relationship between a room and a module gives information on time, which means you can find a free room by elimination. 
 
