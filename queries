@@ -92,7 +92,6 @@ MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Monday"}), (m:Module {name: "Serv
 Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(r)
 
 
-
 -- Tuesday --
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0436 CR5"})
 Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"C", duration:"2HR"}]->(r)
@@ -112,6 +111,7 @@ Create (d)-[:HAS{time: "2pm", type: "Practical", group:"B", duration:"2HR"}]->(m
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
 Create (d)-[:HAS{time: "4pm", type: "Practical", group:"B", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"B", duration:"2HR"}]->(r)
 
+
 -- Wednesday --
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0162"})
 Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"C", duration:"1HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"C", duration:"1HR"}]->(r)
@@ -123,7 +123,7 @@ MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday
 Create (d)-[:HAS{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0997"})
-Create ((d)-[:HAS{time: "1pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "1pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
+Create (d)-[:HAS{time: "1pm", type: "Lecture", group:"All", duration:"1HR", day:"Wednesday"}]->(m),(m)-[:IN{time: "1pm", type: "Lecture", group:"All", duration:"1HR", day:"Wednesday"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0994"})
 Create (d)-[:HAS{time: "2pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "2pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
@@ -172,10 +172,18 @@ MATCH (n) where ID(n)=1
 OPTIONAL MATCH (n)-[r]-() //drops n's relations
 DELETE n,r
 
+-- Delete a relationship by ID --
+Match ()-[r]-() Where ID(r)=1
+Delete r
+
 -- Add a property to existing --
 MATCH (l:Lecturer {name:"P Mannion"})
 SET l.groups = 'Gr A'
 RETURN l
+
+-- Add property to existing relationship --
+Match ()-[r]-() Where ID(r)=303 
+set r.day="Wednesday"
 
 -- Display Gr B labs on Monday --
 MATCH (g:Group)-[]-(d:Day),(d:Day)-[h:HAS{group:"A"}]-(m:Module), (m:Module)-[i:IN{group: "A"}]-(r:Room) where g.group='Gr A' and d.name='Monday' return g,d,m,r
@@ -188,6 +196,9 @@ match (c:Course)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) return *
 
 -- Display lecturer's classes for the week --
 match (a)-[:ON]-(d:Day)-[:HAS]-(m:Module)-[:IN]-(r),(m:Module)<-[:TEACHES]-(l:Lecturer{name:"D Costello"}) return *
+
+// Display all lectures
+match (c:Course)-[:ON]-(d:Day)-[h:HAS]-(m)-[i:IN]-(r) where h.type = "Lecture" and i.type = "Lecture" return *
 	
 	
 		
