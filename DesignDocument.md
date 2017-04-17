@@ -1,4 +1,4 @@
-# Design Document - Neo4J Timetabling System
+# Design Document - Timetabling System using Neo4j 
 
 This is the Design Document for timetabling system using Neo4j, completed as part of 3rd Year Software Development module Graph Theory. The document outlines my reasoning for the general structure of the database, as well as some useful example queries.
 
@@ -52,13 +52,11 @@ Lecturer nodes contain information such as title and department, pulled from the
 Room nodes contain their location (campus) and capacity.
 
 ## Creating the Database
-
-creating, retrieving, updating and deleting data.
  
 I started by created nodes in groups - year group, class groups, lecturers, rooms, modules, and days, in that order. All information stored in the AllTimetablesList file is formatted with tabs, so it was quick and easy generate queries. For example, to generate rooms I started off with a blank query with a row for each room:
 
 	CREATE (a:Room {name: "", campus:"", capacity: ""})
-		  ,(b:Room {name: "", campus:"", capacity: ""})
+	  ,(b:Room {name: "", campus:"", capacity: ""})
 	      ,(c:Room {name: "", campus:"", capacity: ""})
 		  
 		 etc, etc
@@ -78,9 +76,25 @@ Once lecturers and modules had been tied together, I moved onto student groups. 
 	Create (c)-[:ON]->(d),(d)-[:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 	
 This query finds the specified Year Group, Day, Module and Room. It then ties Year Group to Day (with the label "ON"), then Day to Module (labelled as "HAS"), and finally the Module to the Room (labelled "IN"). In English, the above relationship looks like:  
-__BSc in Software Development - On - Monday - Has - Database Management Systems - In - 0994__  
-I related nodes in this way because when searching a timetable, the most common order is by course and then by day - it wouldn't make much sense if someone tried to search by day and *then* narrow it down to their course. I also added properties on the ON and HAS relationships (*:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}*), to allow for filtering when searching.
+__BSc in Software Development -On- Monday -Has- Database Management Systems -In- 0994__  
+I related nodes in this way because when searching a timetable, the most common order is by course and then by day - it wouldn't make much sense if someone tried to search by day and *then* narrow it down to their course. I also added properties on the IN and HAS relationships (*:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}*), to allow for filtering when searching. Both relationships have the same properties.
 
+I ran into issues when trying to query a room's availability on a particular day, so I had to add a day property to IN and HAS relationships. I decided the easiest way to do this was search relationships by id and edit from there. I found this solution for how to delete a relationship by ID on a [StackOverflow Question](http://stackoverflow.com/questions/28185623/simple-way-to-delete-a-relationship-by-id-in-neo4j-cypher), and simply edited it to set a property instead :
+
+	Match ()-[r]-() Where ID(r)=303 
+	set r.day="Wednesday"
+
+This finds a relationship between two nodes where the ID = 303, and sets a day property on that relationship to "Wednesday".
+
+After creating all nodes, I discovered that the timetable had been changed at stages. This meant I had entered duplicates, so I needed to delete old relationships. I did this by running:
+
+	Match ()-[r]-() Where ID(r)=200
+	Delete r
+
+This works the same way as the SET query above, except it deletes the relationship. I also used this when deleting all instances of a specific relationship type, for example ()-[r:HAS]-() will delete all instances of relationships labelled HAS. This came in very useful when I was figuring out the best way to relate different nodes was.
+
+I kept a detailed account of all queries I used when creating the database - the text file can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/queries). All of the above queries can be found in the file.
+	
 ## Structure and Relationship Logic
 
 As mentioned above, I decided to set the main components of the database as nodes. The more experience I gained with Neo4j, the more I felt that nodes were a lot easier search for than, for example, relationships. Node colours are as follows:  
@@ -107,8 +121,6 @@ When dealing with lectures and how to differentiate them from practicals when se
 	
 ![Just Lectures](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/alllectures.png "Just Lectures")
 
-Both :IN and :HAS relationships have the same properties in order to allow for filtering.
-
 I had considered storing time slots as nodes, but felt this would have made things too complicated due to the amount of time slots as well as timeslots overlapping every day. In the end I opted for making timeslots a property on relationships, along with type (lecture or practical) and duration. This makes it much easier to grab more information from the database, with smaller queries. For example, to see all Group A Labs for the week all you need to run is:
 
 	match (g:Group{group:"Gr A"})-[o:ON]-(d:Day)-[h:HAS]-(m)-[i:IN]-(r) where h.group = "A" and i.group = "A" return *
@@ -125,5 +137,52 @@ Hovering over a relationship between a room and a module gives information on ti
 
 
 ## Conclusion
+
+While creating the database initially proved challenging, I got more and more used to it as time went on. Actually gathering data was one of the more difficult elements as it involved finding the information, formatting it somehow, and generating queries from it. Creating the database itself was relatively straightforward - once or twice I had to rethink the design and add properties here and there, but for the most part the process flowed quite well.
+
+Displaying the whole database at once can be somewhat cluttered but if searches are filtered well, Neo4j automatically displays information well. Colour coding was a great asset when testing queries, as it gave a quick idea as to whether or not the query was in fact displaying what I wanted. It also helped a lot in figuring out the general efficiency of the database because I could easily see if different nodes looked like they should or shouldn't be related.
+
+By recording all queries used I've made it easy to expand this database in the future - it would just be a case of pulling data from the timetabling website and generating queries in the same way I did for this prototype. Any queries I used, whether for creating, editing or searching, were all very quick -  mostly 2 to 10 milliseconds but very occassionally up to 80/90 milliseconds. The only issue I ran into with speed was when I would forget to clear the slides - if I had 30/40 slides in the queue then I found the whole console would get slow, but this is human error more than anything else. As a whole, Neo4j executes varying queries extremely quickly.
+
+To summarise, this project has highlighted the advantages of using Neo4j as a database, and also made me more comfortable with it and the Cypher language. I'm sure there are more efficient ways of storing this data or creating and querying the data, but I felt my design plans and logic were all very reasonable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

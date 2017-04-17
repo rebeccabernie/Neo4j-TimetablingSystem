@@ -1,5 +1,5 @@
 # Timetabling System
-This is a project for 3rd Year Software Development module Graph Theory, using graph database management system Neo4j.  
+This is a project for 3rd Year Software Development module Graph Theory, using graph database management system [Neo4j](https://neo4j.com/download/).  
 The [Design Document](https://github.com/rebeccabernie/TimetablingSystem/blob/master/DesignDocument.md) contains a detailed account of decisions made and design logic behind the datatbase, as well as some example queries.
 
 ### Goals
