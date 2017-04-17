@@ -10,3 +10,7 @@ The database should store information about student groups/years, classrooms, le
 ### Structure   
 
 For demonstration purposes, I will be focusing on the Software Development Level 7 (Year 3) and course. The database will contain information about the *current* semester - i.e. Spring/Summer.
+
+The finished prototype looks as follows:  
+
+![Full Database](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/fulldatabase.PNG "Full Database")

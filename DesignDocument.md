@@ -51,11 +51,46 @@ Module nodes contain the Moodle Code for the course, obtained from [GMIT's Learn
 Lecturer nodes contain information such as title and department, pulled from the [Staff Directory](https://www.gmit.ie/staff-directory).  
 Room nodes contain their location (campus) and capacity.
 
-I recorded all queries used to create nodes and add relationships in a text file, which can be found [here](https://github.com/rebeccabernie/TimetablingSystem/blob/master/queries).
+## Creating the Database
 
-## Structure
+creating, retrieving, updating and deleting data.
+ 
+I started by created nodes in groups - year group, class groups, lecturers, rooms, modules, and days, in that order. All information stored in the AllTimetablesList file is formatted with tabs, so it was quick and easy generate queries. For example, to generate rooms I started off with a blank query with a row for each room:
 
-As mentioned above, I decided to set the main components of the database as nodes. The more experience I gained with Neo4j, the more I felt that nodes were a lot easier search for than, for example, relationships.  
+	CREATE (a:Room {name: "", campus:"", capacity: ""})
+		  ,(b:Room {name: "", campus:"", capacity: ""})
+	      ,(c:Room {name: "", campus:"", capacity: ""})
+		  
+		 etc, etc
+
+I then used vertical selection in Notepad++ (Ctrl + Alt + Shift) to copy and paste all the data into this empty query. The process was much the same for the other nodes.  
+
+I then moved on to creating relationships. The simplest relationships in the database are those between Lecturer and Module, so I created those first using the following query:
+
+	MATCH (l:Lecturer {name:"I McLoughlin"}), (m:Module {name: "Graph Theory"})
+	Create (l)-[:TEACHES]->(m)
+	
+Match finds the lecturer and module, and create adds a relationship with the label "TEACHES" between the two. 
+
+Once lecturers and modules had been tied together, I moved onto student groups. I decided to create relationships day by day because the AllTimetablesList file goes by days - this meant I'd be less likely to miss anything by going in the same order. These relationships were more complicated than Lecturer-Module ones, and were created as follows:
+
+	MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Monday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0994"})
+	Create (c)-[:ON]->(d),(d)-[:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
+	
+This query finds the specified Year Group, Day, Module and Room. It then ties Year Group to Day (with the label "ON"), then Day to Module (labelled as "HAS"), and finally the Module to the Room (labelled "IN"). In English, the above relationship looks like:  
+__BSc in Software Development - On - Monday - Has - Database Management Systems - In - 0994__  
+I related nodes in this way because when searching a timetable, the most common order is by course and then by day - it wouldn't make much sense if someone tried to search by day and *then* narrow it down to their course. I also added properties on the ON and HAS relationships (*:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}*), to allow for filtering when searching.
+
+## Structure and Relationship Logic
+
+As mentioned above, I decided to set the main components of the database as nodes. The more experience I gained with Neo4j, the more I felt that nodes were a lot easier search for than, for example, relationships. Node colours are as follows:  
+
+- Red: 		Year Group
+- Green: 	Class Group
+- Yellow: 	Days of the Week
+- Blue:		Modules 
+- Purple:	Lecturers
+- Pink:		Rooms
 
 Modules tie everything together in any timetable, so it made sense to have them act as a link between different nodes in this database.  Lecturers relate to Modules, which in turn relate to rooms and student groups - meaning a lecturer can easily find out what module they have with what student group and in what room. 
 By running the following query, the lecturer is presented with their own node, whatever subjects they teach, and the rooms they're in. The lecturer can also see what group they have in what room, for how long, and at what time by looking at the relationship properties between module and room.
@@ -69,6 +104,8 @@ Similarly, student groups can easily find out what module they have in what room
 When dealing with lectures and how to differentiate them from practicals when searching, I decided to use the Year Group node to represent the year as a whole. The entire year group has the same lectures, but not necessarily the same lab groups. I had considered simply tying all lab groups to a lecture, but felt that it made the database more cluttered and slightly less searchable. By tying the year group to lectures, you can easily search for *just* lectures or *just* practicals. For example:
 
 	match (c:Course)-[o:ON]-(d:Day)-[h:HAS]-(m:Module)-[i:IN]-(r:Room) where h.type = "Lecture" and i.type = "Lecture" return *
+	
+![Just Lectures](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/alllectures.png "Just Lectures")
 
 Both :IN and :HAS relationships have the same properties in order to allow for filtering.
 
@@ -76,30 +113,17 @@ I had considered storing time slots as nodes, but felt this would have made thin
 
 	match (g:Group{group:"Gr A"})-[o:ON]-(d:Day)-[h:HAS]-(m)-[i:IN]-(r) where h.group = "A" and i.group = "A" return *
 	
+![Group A Labs](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/groupAlabs.png "Group A Labs")
+	
 Searching rooms is also an integral part of any timetable, so I felt having the ability to display when a room is occupied was important. Unfortunately there's no clear way of displaying when a room is free, but you can display all instances where the room is occupied. For example, if you want to see when room 0994 is occupied on a Wednesday, run the following query:
 
 	match (r:Room)-[i:IN]-(m:Module) where i.day="Wednesday" and r.name="0994" return *
 	
+![Room Availablility](https://github.com/rebeccabernie/TimetablingSystem/blob/master/QueryScreenshots/roomdeetswednesday.png "Room Availability")
+	
 Hovering over a relationship between a room and a module gives information on time, which means you can find a free room by elimination. 
-	
 
-## Relationship Logic
 
-* Will include rough drawings/explanation of relationships *
-
-## Useful Queries
-
-Display all Group A Labs on a Tuesday - 
-
-    MATCH (g:Group)-[]-(d:Day),(d:Day)-[h:HAS{group:"A"}]-(m:Module), (m:Module)-[i:IN{group: "A"}]-(r:Room) where g.group='Gr A' and d.name='Monday'  
-	return g,d,m,r
-	 
-Display only lectures for the whole week -
-
-	match (c:Course)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) return *
-	
-Display a particular lecturer's classes for the week -
-
-	match (a)-[:ON]-(d:Day)-[:HAS]-(m:Module)-[:IN]-(r),(m:Module)<-[:TEACHES]-(l:Lecturer{name:"D Costello"}) return *
+## Conclusion
 
 
