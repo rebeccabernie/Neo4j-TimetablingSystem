@@ -9,12 +9,12 @@ CREATE (a:Group {group: "Gr A", course: "BSc in Software Development"})
 	  ,(c:Group {group: "Gr C", course: "BSc in Software Development"})
 
 * Later added groups property, see misc queries below
-CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics"})
-	  ,(b:Lecturer {name: "D O'Donovan", title: "Ms.", dept: "Comp Sci & Appl Physics"})
-	  ,(c:Lecturer {name: "D Costello", title: "Mr.", dept: "Comp Sci & Appl Physics"})
-	  ,(d:Lecturer {name: "M Hynes", title: "Mr.", dept: "Comp Sci & Appl Physics"})
-	  ,(e:Lecturer {name: "P Mannion", title: "Mr.", dept: "Comp Sci & Appl Physics"})
-	  ,(f:Lecturer {name: "G Harrison", title: "Mr.", dept: "Comp Sci & Appl Physics"})
+CREATE (a:Lecturer {name: "I McLoughlin", title: "Dr.", dept: "Comp Sci & Appl Physics", groups:"All"})
+	  ,(b:Lecturer {name: "D O'Donovan", title: "Ms.", dept: "Comp Sci & Appl Physics", groups:"All"})
+	  ,(c:Lecturer {name: "D Costello", title: "Mr.", dept: "Comp Sci & Appl Physics", groups:"All"})
+	  ,(d:Lecturer {name: "M Hynes", title: "Mr.", dept: "Comp Sci & Appl Physics"}, groups:"All")
+	  ,(e:Lecturer {name: "P Mannion", title: "Mr.", dept: "Comp Sci & Appl Physics", groups:"A"})
+	  ,(f:Lecturer {name: "G Harrison", title: "Mr.", dept: "Comp Sci & Appl Physics", groups:"All"})
 
 CREATE (a:Room {name: "0145", campus:"Dublin Rd", capacity: "16"})
 	  ,(b:Room {name: "0994", campus:"Dublin Rd", capacity: "90"})
@@ -48,10 +48,7 @@ CREATE (m:Day {name: "Monday"})
 	  ,(u:Day {name: "Thursday"})
 	  ,(f:Day {name: "Friday"})
 
-CREATE (m:TimeSlot {name: "09:00", duration:"1HR"})
-,(m:Time {name: "09:00"})
-
-	
+	  
 	
 	---- Creating Relationships ----
 	
@@ -89,7 +86,7 @@ MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Grap
 Create (g)-[:ON]->(d),(d)-[:HAS{time: "2pm", type: "Practical", group:"A", duration:"1HR"}]->(m),(m)-[:IN{time: "2pm", type: "Practical", group:"A", duration:"1HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Monday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0481 CR4"})
-Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(r)
+Create (d)-[:HAS{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"A", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Monday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
 Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"C", duration:"2HR"}]->(r)
@@ -98,70 +95,66 @@ Create (g)-[:ON]->(d),(d)-[:HAS{time: "4pm", type: "Practical", group:"C", durat
 
 -- Tuesday --
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0436 CR5"})
-Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"C", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0481 CR4"})
-Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"A", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"0470"})
-Create (g)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
-
-MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0482 CR3"})
-Create (g)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "11am", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "11am", type: "Practical", group:"A", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0379"})
-Create (g)-[:ON]->(d),(d)-[:AT_12PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "12pm", type: "Practical", group:"B", duration:"1HR"}]->(m),(m)-[:IN{time: "12pm", type: "Practical", group:"B", duration:"1HR"}]->(r)
 
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0436 CR5"})
-Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "2pm", type: "Practical", group:"B", duration:"2HR"}]->(m),(m)-[:IN{time: "2pm", type: "Practical", group:"B", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Tuesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
-Create (g)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
-
+Create (d)-[:HAS{time: "4pm", type: "Practical", group:"B", duration:"2HR"}]->(m),(m)-[:IN{time: "4pm", type: "Practical", group:"B", duration:"2HR"}]->(r)
 
 -- Wednesday --
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0162"})
-Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"C", duration:"1HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"C", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0938"})
-Create (c)-[:ON]->(d),(d)-[:AT_10AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (c)-[:ON]->(d),(d)-[:HAS{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "10am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Professional Practice in IT"}), (r:Room {name:"0208"})
-Create (c)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0997"})
-Create (c)-[:ON]->(d),(d)-[:AT_1PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create ((d)-[:HAS{time: "1pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "1pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0994"})
-Create (c)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "2pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "2pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Software Testing"}), (r:Room {name:"0939"})
-Create (c)-[:ON]->(d),(d)-[:AT_3PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "3pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "3pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Wednesday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0995"})
-Create (c)-[:ON]->(d),(d)-[:AT_4PM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "4pm", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "4pm", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 
 -- Thursday --
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Thursday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"PF18"})
-Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"B", duration:"2HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"B", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Thursday"}), (m:Module {name: "Mobile Applications Development"}), (r:Room {name:"PF18"})
-Create (g)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "11am", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "11am", type: "Practical", group:"C", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr C"}), (d:Day {name: "Thursday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0483 CR2"})
-Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (d)-[:HAS{time: "2pm", type: "Practical", group:"C", duration:"2HR"}]->(m),(m)-[:IN{time: "2pm", type: "Practical", group:"C", duration:"2HR"}]->(r)
 
 MATCH (g:Group {group:"Gr A"}), (d:Day {name: "Thursday"}), (m:Module {name: "Server Side RAD"}), (r:Room {name:"0436 CR5"})
-Create (g)-[:ON]->(d),(d)-[:AT_2PM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "2pm", type: "Practical", group:"A", duration:"2HR"}]->(m),(m)-[:IN{time: "2pm", type: "Practical", group:"A", duration:"2HR"}]->(r)
 
 
 -- Friday --
 MATCH (g:Group {group:"Gr B"}), (d:Day {name: "Friday"}), (m:Module {name: "Database Management Systems"}), (r:Room {name:"0482 CR3"})
-Create (g)-[:ON]->(d),(d)-[:AT_9AM]->(m),(d)-[:HAS]->(m),(d)-[:PRACTICAL]->(m),(m)-[:IN]->(r)
+Create (g)-[:ON]->(d),(d)-[:HAS{time: "9am", type: "Practical", group:"B", duration:"2HR"}]->(m),(m)-[:IN{time: "9am", type: "Practical", group:"B", duration:"2HR"}]->(r)
 
 MATCH (c:Course{cName: "BSc in Software Development"}), (d:Day {name: "Friday"}), (m:Module {name: "Graph Theory"}), (r:Room {name:"0208"})
-Create (c)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m)-[:IN]->(r)
+Create (c)-[:ON]->(d),(d)-[:HAS{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(m),(m)-[:IN{time: "11am", type: "Lecture", group:"All", duration:"1HR"}]->(r)
 
 
 
@@ -170,28 +163,28 @@ Create (c)-[:ON]->(d),(d)-[:AT_11AM]->(m),(d)-[:HAS]->(m),(d)-[:LECTURE]->(m),(m
 -- Return node and relationships --
 MATCH (d:Day{name:"Monday"})-[r]-(z) return d,r,z
 
----- Delete all instances of a specific relationship type ----
+-- Delete all instances of a specific relationship type ----
 MATCH ()-[r:HAS]-() 
 DELETE r;
 
----- Delete a node by ID ----
+-- Delete a node by ID --
 MATCH (n) where ID(n)=1
 OPTIONAL MATCH (n)-[r]-() //drops n's relations
 DELETE n,r
 
--- Add a property to existing--
+-- Add a property to existing --
 MATCH (l:Lecturer {name:"P Mannion"})
 SET l.groups = 'Gr A'
 RETURN l
 
+-- Display Gr B labs on Monday --
+MATCH (g:Group)-[]-(d:Day),(d:Day)-[h:HAS{group:"A"}]-(m:Module), (m:Module)-[i:IN{group: "A"}]-(r:Room) where g.group='Gr A' and d.name='Monday' return g,d,m,r
 
- // Display Gr B on monday
-  match (g:Group)-[:ON]->(d:Day), (d:Day)-[]-(m:Module), (m:Module)-[]-(r:Room) where g.group = 'Gr B' and d.name = "Monday" return *
-  
-  MATCH (g:Group)-[]-(d:Day),(d:Day)-[:HAS{group:"A"}]-(m:Module), (m:Module)-[:IN{group: "A"}]-(r:Room) where g.group='Gr A' and d.name='Monday' return g,d,m,r
+-- Display everything for Tuesday --
+match (a)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) where d.name="Tuesday" return *
 
-//
-
+-- Display all lectures for the week --
+match (c:Course)-[:ON]-(d:Day)-[:HAS]-(m)-[:IN]-(r) return *
 
 
 
