@@ -17,7 +17,7 @@ On the GMIT [Timetabling Website](http://timetable.gmit.ie/sws1617/(S(315aqmvve2
 	Week(s)				Spring/Summer - January 2017 to June 2017
 	Day(s)				Weekdays
 	Time Range			Working Day (08:00 - 18:00)
-	Type of Report		List Timetable
+	Type	 			List Timetable
 	
 I used the list view as it was formatted in rows and columns and allowed data to be selected as plain text, making it easier to manipulate in a text editor. List view also gave a list of lecturer names, rather than their numbers in the grid view. I ended up with a text file, containing the following information - 
 
@@ -27,13 +27,27 @@ All of the data can be seen in the [AllTimetablesList File](https://github.com/r
 
 ## Data To Be Stored
 
-Most timetables, regardless of what college/institute they relate to, contain the same information - times, days, subjects and rooms. I used GMIT's own timetabling website to see what basic data needed to be stored and came to the conclusion that 
+Most timetables, regardless of what college/institute they relate to, contain the same information - times, days, subjects and rooms. After extracting the data as explained above, I came to the conclusion that the following would be stored as nodes:
 
+- Year Group (BSc Software Development Y3): Used for lectures that all groups share
+- Class Groups: Used for individual group practicals
+- Modules
+- Days of the Week
+- Lecturers
+- Rooms
+
+Time Slots, Duration and Type (Lecture or Practical) are also contained in the database, but not as nodes.
 
 
 ## Structure
 
-The best way to approach creating this database, in my opinion, was to take the main components of a timetable and set them as nodes.  Lecturers, rooms, modules, class groups and days of the week can all be searched as nodes in the database - in my own experience, nodes are somewhat easier to search for than properties on relationships.
+As mentioned above, I decided to set the main components of the database as nodes. The more experience I gained with Neo4j, the more I felt that nodes were a lot easier search for than, for example, relationships.  
+
+Modules tie everything together in any timetable, so it made sense to have them act as a link between different nodes in this database.  Lecturers relate to Modules, which in turn relate to rooms and student groups - meaning a lecturer can easily find out what module they have with what student group and in what room. Similarly, student groups can easily find out what module they have in what room and with what lecturer.
+
+When dealing with lectures and how to differentiate them from practicals when searching, I decided to use the Year Group node to represent the year as a whole. The entire year group has the same lectures, but not necessarily the same lab groups. I had considered simply tying all lab groups to a lecture, but felt that it made the database more cluttered and slightly less searchable. By tying the year group to lectures, you can easily search for *just* lectures or *just* practicals.
+
+I had considered storing time slots as nodes, but felt this would have made things too complicated due to the amount of time slots as well as timeslots overlapping every day.
 
 ## Relationship Logic
 
