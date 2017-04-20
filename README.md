@@ -6,6 +6,8 @@ The [Design Document](https://github.com/rebeccabernie/TimetablingSystem/blob/ma
 ### Goals
 The goal of this project is to design and prototype a Neo4j database for use in a timetabling system for a third level institute, such as Galway-Mayo Institute of Technology. The database should store information about student groups/years, classrooms, lecturers and subjects, and any other relevant information.  
 
+> Database password, if needed: timetable
+
 The finished prototype looks as follows:  
 
 ![Full Database](https://github.com/rebeccabernie/TimetablingSystem/blob/master/Resources/QueryScreenshots/fulldatabase.PNG "Full Database")

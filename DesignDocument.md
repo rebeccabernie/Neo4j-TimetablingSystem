@@ -4,6 +4,8 @@
 > Rebecca Kane, G00320698  
 > Third Year BSc Software Development Student  
 
+> Database password, if needed: timetable
+
 This is the Design Document for timetabling system using Neo4j, completed as part of 3rd Year Software Development module Graph Theory. The document outlines my reasoning for the general structure of the database, as well as some useful example queries.
 
 
